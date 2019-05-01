@@ -1,0 +1,38 @@
+{
+  "name": "nodejs-api-boilerplate",
+  "version": "1.0.0",
+  "description": "Node Backend w/ Express",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=production node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/txen89/polydig-backend.git"
+  },
+  "author": "Nemanja Ignjatovic",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/txen89/polydig-backend/issues"
+  },
+  "homepage": "https://github.com/txen89/polydig-backend#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.3",
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.3",
+    "cors": "^2.8.5",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "express-validator": "^5.3.1",
+    "helmet": "^3.15.0",
+    "jsonwebtoken": "^8.4.0",
+    "mongodb": "^3.1.13",
+    "mongoose": "^5.4.7",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
