@@ -4,7 +4,6 @@ const fs = require("fs");
 const dotenv = require("dotenv").config();
 const bodyParser = require("body-parser");
 const routes = require("./routes");
-const morgan = require("morgan");
 const helmet = require("helmet");
 const compression = require("compression");
 const path = require("path");
@@ -13,13 +12,15 @@ const dbConnect = require("./utils/dbConnect");
 const expressValidator = require("express-validator");
 const errorMiddleware = require("./middlewares/errorMiddleware");
 
+// Logging
+const morganMiddleware = require("./middlewares/morganMiddleware");
+require("console-warn");
+require("console-info");
+require("console-error");
+
 var port = process.env.PORT || 5000;
 
-const createLogStream = fs.createWriteStream(
-  path.join(__dirname, "access.log"),
-  { flags: "a" }
-);
-app.use(morgan("combined", { stream: createLogStream }));
+app.use(morganMiddleware);
 app.use(helmet());
 app.use(compression());
 app.use(cors());
@@ -31,7 +32,7 @@ app.use(errorMiddleware);
 dbConnect()
   .then(result => {
     app.listen(port, () => {
-      console.log(`Server up, listening to localhost:${port}, ${result}`);
+      console.info(`Server up, listening to localhost:${port}, ${result}`);
     });
   })
-  .catch(err => console.log(err));
+  .catch(err => console.error(err));
